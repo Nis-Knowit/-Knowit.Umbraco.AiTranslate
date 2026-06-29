@@ -1,0 +1,25 @@
+{
+  "$schema": "../../umbraco-package-schema.json",
+  "name": "AI Translate",
+  "version": "1.0.0",
+  "extensions": [
+    {
+      "type": "dashboard",
+      "alias": "AiTranslate.Dashboard",
+      "name": "AI Translate Dashboard",
+      "element": "/App_Plugins/AiTranslate/ai-translate-dashboard.js",
+      "elementName": "ai-translate-dashboard",
+      "weight": 10,
+      "meta": {
+        "label": "AI Translate",
+        "pathname": "ai-translate"
+      },
+      "conditions": [
+        {
+          "alias": "Umb.Condition.SectionAlias",
+          "match": "Umb.Section.Content"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <!-- This package is standalone (not part of any Central Package Management tree). -->
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+
+    <!-- Serve wwwroot/App_Plugins/... at /App_Plugins/... so the manifest's
+         element paths resolve identically in-project and from the NuGet package. -->
+    <StaticWebAssetBasePath>/</StaticWebAssetBasePath>
+
+    <!-- Backoffice JS/JSON are shipped as-is; let Umbraco/host handle compression. -->
+    <CompressionEnabled>false</CompressionEnabled>
+  </PropertyGroup>
+
+  <!-- NuGet packaging -->
+  <PropertyGroup>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IsPackable>true</IsPackable>
+    <PackageId>Knowit.Umbraco.AiTranslate</PackageId>
+    <Version>1.0.0</Version>
+    <Title>AI Translate for Umbraco</Title>
+    <Authors>Knowit</Authors>
+    <Company>Knowit</Company>
+    <Description>A guided AI translation dashboard for Umbraco. Pick a language pair (or create a new language), choose pages or the whole site, and translate content into other languages using your Umbraco.AI profile. Media references are carried over, link titles are translated, and everything is saved as drafts for review. Requires the Umbraco.AI package.</Description>
+    <PackageTags>umbraco;umbraco-marketplace;umbraco-ai;ai;translation;localization;dashboard</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <IncludeBuildOutput>true</IncludeBuildOutput>
+    <SuppressDependenciesWhenPacking>false</SuppressDependenciesWhenPacking>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Management-API controller base, routing, and Umbraco core services/models. -->
+    <PackageReference Include="Umbraco.Cms.Api.Management" Version="17.4.2" />
+    <!-- Required: the AI chat service that performs the translations. -->
+    <PackageReference Include="Umbraco.AI" Version="1.12.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>
