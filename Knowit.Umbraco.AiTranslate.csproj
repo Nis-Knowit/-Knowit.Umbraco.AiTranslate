@@ -18,7 +18,10 @@
 
   <!-- NuGet packaging -->
   <PropertyGroup>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <!-- Packed explicitly via `dotnet pack` (CI builds first, then packs with
+         the no-build flag). GeneratePackageOnBuild is intentionally NOT set:
+         packing a Razor class library during build trips the static web
+         assets manifest bug on a clean checkout. -->
     <IsPackable>true</IsPackable>
     <PackageId>Knowit.Umbraco.AiTranslate</PackageId>
     <Version>1.0.0</Version>
