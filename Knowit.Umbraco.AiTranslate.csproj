@@ -29,6 +29,8 @@
     <PackageTags>umbraco;umbraco-marketplace;umbraco-ai;ai;translation;localization;dashboard</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Nis-Knowit/-Knowit.Umbraco.AiTranslate</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Nis-Knowit/-Knowit.Umbraco.AiTranslate.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <IncludeBuildOutput>true</IncludeBuildOutput>
     <SuppressDependenciesWhenPacking>false</SuppressDependenciesWhenPacking>
