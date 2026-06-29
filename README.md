@@ -3,11 +3,17 @@
 A guided AI translation dashboard for Umbraco 17+. Translate content page-by-page or
 across a whole site into other languages, using your existing **Umbraco.AI** profile.
 
-## Demo
+## How it works
 
-<video src="https://github.com/Nis-Knowit/-Knowit.Umbraco.AiTranslate/raw/main/Demo.mp4" controls width="100%"></video>
+The dashboard guides you through four steps:
 
-> ▶️ [Watch the demo](https://github.com/Nis-Knowit/-Knowit.Umbraco.AiTranslate/raw/main/Demo.mp4)
+| 1. From | 2. To |
+| :-- | :-- |
+| ![Step 1 – choose the source language](https://raw.githubusercontent.com/Nis-Knowit/-Knowit.Umbraco.AiTranslate/main/step1.png) | ![Step 2 – choose the target language or create a new one](https://raw.githubusercontent.com/Nis-Knowit/-Knowit.Umbraco.AiTranslate/main/step2.png) |
+| **3. Pages** | **4. Translate** |
+| ![Step 3 – pick the pages to translate](https://raw.githubusercontent.com/Nis-Knowit/-Knowit.Umbraco.AiTranslate/main/step3.png) | ![Step 4 – translate and review](https://raw.githubusercontent.com/Nis-Knowit/-Knowit.Umbraco.AiTranslate/main/step4.png) |
+
+▶️ **[Watch the full demo video](https://github.com/Nis-Knowit/-Knowit.Umbraco.AiTranslate/raw/main/Demo.mp4)**
 
 ## Features
 
