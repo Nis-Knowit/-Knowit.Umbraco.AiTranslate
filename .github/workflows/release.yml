@@ -1,10 +1,15 @@
 name: Release to NuGet
 
-# Publishes the package to NuGet.org when you push a version tag (e.g. v1.0.0)
-# or trigger the workflow manually. The package version comes from the tag.
+# Publishes to NuGet.org via Trusted Publishing (OIDC — no stored API key) when
+# you push a version tag (e.g. v1.0.0) or trigger the workflow manually.
 #
-# Setup (once): add a repository secret named NUGET_API_KEY
-#   GitHub → Settings → Secrets and variables → Actions → New repository secret
+# Setup (once), on nuget.org → Account → Trusted Publishing, add a policy:
+#   - Package owner: <your nuget.org account>
+#   - Repository owner: Nis-Knowit
+#   - Repository:       -Knowit.Umbraco.AiTranslate
+#   - Workflow file:    release.yml
+# Then add a repository variable NUGET_USER (your nuget.org username):
+#   GitHub → Settings → Secrets and variables → Actions → Variables → New variable
 on:
   push:
     tags:
@@ -16,6 +21,7 @@ on:
         required: true
 
 permissions:
+  id-token: write   # required for Trusted Publishing (OIDC token issuance)
   contents: read
 
 jobs:
@@ -42,5 +48,11 @@ jobs:
       - name: Pack
         run: dotnet pack Knowit.Umbraco.AiTranslate.csproj -c Release -p:Version=${{ steps.version.outputs.value }} -o ./artifacts
 
+      - name: NuGet login (Trusted Publishing → short-lived key)
+        id: login
+        uses: NuGet/login@v1
+        with:
+          user: ${{ vars.NUGET_USER }}
+
       - name: Push to NuGet
-        run: dotnet nuget push "./artifacts/*.nupkg" --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+        run: dotnet nuget push "./artifacts/*.nupkg" --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
